@@ -1,3 +1,11 @@
+import sys
+class FakeModule:
+    def __init__(self):
+        self.get_build_version = lambda: None
+        
+if 'distutils.msvccompiler' not in sys.modules:
+    sys.modules['distutils.msvccompiler'] = FakeModule()
+
 import os
 import torch
 import numpy as np
